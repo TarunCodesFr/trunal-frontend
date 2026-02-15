@@ -52,7 +52,7 @@ export default function DashboardLayoutWrapper({
             try {
                 // Fetch User
                 const userRes = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001'}/api/auth/me`,
+                    `${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001').replace(/\/$/, '')}/api/auth/me`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }
@@ -64,7 +64,7 @@ export default function DashboardLayoutWrapper({
 
                 // Fetch Projects
                 const projectsRes = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001'}/api/projects`,
+                    `${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001').replace(/\/$/, '')}/api/projects`,
                     {
                         headers: { Authorization: `Bearer ${token}` }
                     }

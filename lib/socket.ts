@@ -1,6 +1,8 @@
 import { io, Socket } from 'socket.io-client';
 
-const URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001';
+const URL = (
+    process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001'
+).replace(/\/$/, '');
 
 export const socket: Socket = io(URL, {
     autoConnect: false,

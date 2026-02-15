@@ -39,7 +39,7 @@ export default function ProjectChatPage() {
             try {
                 const token = localStorage.getItem('token');
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001'}/api/projects/${projectId}/messages`,
+                    `${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001').replace(/\/$/, '')}/api/projects/${projectId}/messages`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`

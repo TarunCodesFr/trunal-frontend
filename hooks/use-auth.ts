@@ -25,7 +25,7 @@ export function useAuth() {
 
             try {
                 const res = await fetch(
-                    `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001'}/api/auth/me`,
+                    `${(process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4001').replace(/\/$/, '')}/api/auth/me`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
