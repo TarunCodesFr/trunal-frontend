@@ -67,8 +67,8 @@ const Footer = () => {
     return (
         <div className={barlow.className}>
             <footer className="relative bg-black text-white border-t border-white/10 overflow-hidden">
-                {/* Background elements */}
-                <div className="absolute inset-0 opacity-30 pointer-events-none">
+                {/* Background elements - hidden on mobile */}
+                <div className="absolute inset-0 opacity-30 pointer-events-none hidden lg:block">
                     <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 via-transparent to-cyan-600/20" />
                 </div>
 

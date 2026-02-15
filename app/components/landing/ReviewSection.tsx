@@ -26,8 +26,6 @@ interface Review {
 }
 
 const Reviews = () => {
-    const [isPaused, setIsPaused] = useState(false);
-
     const reviews: Review[] = [
         {
             id: 1,
@@ -166,7 +164,7 @@ const Reviews = () => {
                         </div>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-6 underline text-gray-300">
                             Trusted by more than{' '}
-                            <span className="font-medium bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                            <span className="font-medium bg-linear-to-r from-violet-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
                                 40
                             </span>
                             <br />
@@ -178,26 +176,22 @@ const Reviews = () => {
                 {/* Scrolling Reviews Grid */}
                 <div className="relative">
                     {/* Gradient overlays for fade effect */}
-                    <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black to-transparent z-10 pointer-events-none" />
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[800px] overflow-hidden">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[600px] lg:max-h-[800px] overflow-hidden">
                         {/* Column 1 - Scrolls down */}
                         <ScrollingColumn
                             reviews={column1}
                             direction="down"
-                            speed={30}
-                            isPaused={isPaused}
-                            setIsPaused={setIsPaused}
+                            speed={40}
                         />
 
                         {/* Column 2 - Scrolls up */}
                         <ScrollingColumn
                             reviews={column2}
                             direction="up"
-                            speed={35}
-                            isPaused={isPaused}
-                            setIsPaused={setIsPaused}
+                            speed={45}
                         />
 
                         {/* Column 3 - Scrolls down (hidden on mobile) */}
@@ -205,9 +199,7 @@ const Reviews = () => {
                             <ScrollingColumn
                                 reviews={column3}
                                 direction="down"
-                                speed={32}
-                                isPaused={isPaused}
-                                setIsPaused={setIsPaused}
+                                speed={42}
                             />
                         </div>
                     </div>
@@ -221,47 +213,31 @@ interface ScrollingColumnProps {
     reviews: Review[];
     direction: 'up' | 'down';
     speed: number;
-    isPaused: boolean;
-    setIsPaused: (paused: boolean) => void;
 }
 
 const ScrollingColumn = ({
     reviews,
     direction,
-    speed,
-    isPaused,
-    setIsPaused
+    speed
 }: ScrollingColumnProps) => {
-    const controls = useAnimationControls();
+    const [isPaused, setIsPaused] = useState(false);
 
-    useEffect(() => {
-        if (isPaused) {
-            controls.stop();
-        } else {
-            controls.start({
-                y: direction === 'down' ? ['0%', '-50%'] : ['-50%', '0%'],
-                transition: {
-                    duration: speed,
-                    repeat: Infinity,
-                    ease: 'linear'
-                }
-            });
-        }
-    }, [isPaused, controls, direction, speed]);
-
-    useEffect(() => {
-        controls.start({
-            y: direction === 'down' ? ['0%', '-50%'] : ['-50%', '0%'],
-            transition: {
+    return (
+        <motion.div
+            className="flex flex-col gap-6"
+            initial={{ y: direction === 'down' ? '0%' : '-50%' }}
+            animate={{
+                y: direction === 'down' ? '-50%' : '0%'
+            }}
+            transition={{
                 duration: speed,
                 repeat: Infinity,
                 ease: 'linear'
-            }
-        });
-    }, [controls, direction, speed]);
-
-    return (
-        <motion.div className="flex flex-col gap-6" animate={controls}>
+            }}
+            style={{
+                animationPlayState: isPaused ? 'paused' : 'running'
+            }}
+        >
             {reviews.map((review, index) => (
                 <ReviewCard
                     key={`${review.id}-${index}`}
@@ -291,10 +267,10 @@ const ReviewCard = ({ review, onHoverStart, onHoverEnd }: ReviewCardProps) => {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             >
                 {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-600/0 to-cyan-600/0 group-hover:from-violet-600/10 group-hover:to-cyan-600/10 rounded-2xl blur-xl transition-all duration-500" />
+                <div className="absolute inset-0 bg-linear-to-br from-violet-600/0 to-cyan-600/0 group-hover:from-violet-600/10 group-hover:to-cyan-600/10 rounded-2xl blur-xl transition-all duration-500" />
 
                 {/* Card content */}
-                <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm rounded-2xl p-8 group-hover:border-white/20 transition-all duration-300">
+                <div className="relative border border-white/10 bg-white/2 lg:backdrop-blur-sm rounded-2xl p-8 group-hover:border-white/20 transition-all duration-300">
                     {/* Quote icon */}
                     <div className="mb-6 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
                         <Quote size={32} className="text-violet-400" />
@@ -337,7 +313,7 @@ const ReviewCard = ({ review, onHoverStart, onHoverEnd }: ReviewCardProps) => {
 
                     {/* Animated gradient bar at bottom */}
                     <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400 rounded-b-2xl origin-left"
+                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-linear-to-r from-violet-400 via-cyan-400 to-emerald-400 rounded-b-2xl origin-left"
                         initial={{ scaleX: 0 }}
                         whileHover={{ scaleX: 1 }}
                         transition={{ duration: 0.3 }}

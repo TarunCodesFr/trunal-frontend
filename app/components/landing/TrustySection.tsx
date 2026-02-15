@@ -41,6 +41,17 @@ const TrustySection = () => {
     );
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+    useEffect(() => {
+        const checkScreenSize = () => {
+            setIsLargeScreen(window.innerWidth >= 1024);
+        };
+
+        checkScreenSize();
+        window.addEventListener('resize', checkScreenSize);
+        return () => window.removeEventListener('resize', checkScreenSize);
+    }, []);
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -129,7 +140,7 @@ const TrustySection = () => {
                 <div className="fixed inset-0 opacity-30">
                     <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 via-transparent to-cyan-600/20" />
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-tr from-orange-600/10 via-transparent to-emerald-600/10"
+                        className="absolute inset-0 bg-gradient-to-tr from-orange-600/10 via-transparent to-emerald-600/10 hidden lg:block"
                         animate={{
                             rotate: [0, 360]
                         }}
@@ -287,7 +298,9 @@ const TrustySection = () => {
                                     <motion.div
                                         className="relative h-[400px] rounded-2xl overflow-hidden"
                                         style={{
-                                            transform: `perspective(1000px) rotateY(${mousePosition.x * 0.05}deg) rotateX(${-mousePosition.y * 0.05}deg)`
+                                            transform: isLargeScreen
+                                                ? `perspective(1000px) rotateY(${mousePosition.x * 0.05}deg) rotateX(${-mousePosition.y * 0.05}deg)`
+                                                : 'none'
                                         }}
                                         transition={{
                                             type: 'spring',
@@ -297,27 +310,28 @@ const TrustySection = () => {
                                     >
                                         <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 via-cyan-600/20 to-emerald-600/20 backdrop-blur-3xl" />
 
-                                        {/* Floating elements */}
-                                        {[...Array(3)].map((_, i) => (
-                                            <motion.div
-                                                key={i}
-                                                className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20"
-                                                style={{
-                                                    left: `${20 + i * 25}%`,
-                                                    top: `${20 + i * 20}%`
-                                                }}
-                                                animate={{
-                                                    y: [0, -20, 0],
-                                                    rotate: [0, 180, 360]
-                                                }}
-                                                transition={{
-                                                    duration: 4 + i,
-                                                    repeat: Infinity,
-                                                    ease: 'easeInOut',
-                                                    delay: i * 0.5
-                                                }}
-                                            />
-                                        ))}
+                                        {/* Floating elements - hidden on mobile/tablet */}
+                                        {isLargeScreen &&
+                                            [...Array(3)].map((_, i) => (
+                                                <motion.div
+                                                    key={i}
+                                                    className="absolute w-32 h-32 rounded-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md border border-white/20"
+                                                    style={{
+                                                        left: `${20 + i * 25}%`,
+                                                        top: `${20 + i * 20}%`
+                                                    }}
+                                                    animate={{
+                                                        y: [0, -20, 0],
+                                                        rotate: [0, 180, 360]
+                                                    }}
+                                                    transition={{
+                                                        duration: 4 + i,
+                                                        repeat: Infinity,
+                                                        ease: 'easeInOut',
+                                                        delay: i * 0.5
+                                                    }}
+                                                />
+                                            ))}
                                     </motion.div>
                                 </div>
                             </div>

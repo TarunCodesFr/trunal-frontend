@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import LoadingUtil from '../components/util/LoadingUtil';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -23,11 +24,7 @@ export default function LoginPage() {
     }, []);
 
     if (authLoading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center text-white">
-                Checking authentication...
-            </div>
-        );
+        return <LoadingUtil />;
     }
 
     async function handleLogin(e: React.FormEvent) {

@@ -74,9 +74,9 @@ const Hero = () => {
             >
                 {/* Animated gradient background - matches WebsitePartner */}
                 <div className="fixed inset-0 opacity-30">
-                    <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 via-transparent to-cyan-600/20" />
+                    <div className="absolute inset-0 bg-linear-to-br from-violet-600/20 via-transparent to-cyan-600/20" />
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-tr from-orange-600/10 via-transparent to-emerald-600/10"
+                        className="absolute inset-0 bg-linear-to-tr from-orange-600/10 via-transparent to-emerald-600/10 hidden lg:block"
                         animate={{
                             rotate: [0, 360]
                         }}
@@ -279,7 +279,7 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Interactive floating elements */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 pointer-events-none overflow-hidden hidden lg:block">
                     {[...Array(5)].map((_, i) => (
                         <motion.div
                             key={i}
@@ -303,23 +303,23 @@ const Hero = () => {
                     ))}
                 </div>
 
-                {/* 3D Parallax orbs */}
+                {/* 3D Parallax orbs - hidden on mobile/tablet */}
                 <motion.div
-                    className="absolute top-1/4 left-[10%] w-64 h-64 bg-violet-600/10 rounded-full blur-3xl"
+                    className="absolute top-1/4 left-[10%] w-64 h-64 bg-violet-600/10 rounded-full blur-3xl hidden lg:block"
                     style={{
                         x: useTransform(scrollY, [0, 500], [0, -50]),
                         y: mousePosition.y * 0.5
                     }}
                 />
                 <motion.div
-                    className="absolute top-1/3 right-[15%] w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl"
+                    className="absolute top-1/3 right-[15%] w-80 h-80 bg-cyan-600/10 rounded-full blur-3xl hidden lg:block"
                     style={{
                         x: useTransform(scrollY, [0, 500], [0, 50]),
                         y: mousePosition.y * -0.3
                     }}
                 />
                 <motion.div
-                    className="absolute bottom-1/4 left-[20%] w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl"
+                    className="absolute bottom-1/4 left-[20%] w-72 h-72 bg-emerald-600/10 rounded-full blur-3xl hidden lg:block"
                     style={{
                         x: mousePosition.x * 0.3,
                         y: useTransform(scrollY, [0, 500], [0, 80])
