@@ -2,7 +2,11 @@
 
 import React, { useEffect, useRef } from 'react';
 
-export default function AnimatedBackground({ children }) {
+export default function AnimatedBackground({
+    children
+}: {
+    children: React.ReactNode;
+}) {
     const canvasRef = useRef(null);
 
     useEffect(() => {
