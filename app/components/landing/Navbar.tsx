@@ -63,7 +63,7 @@ export default function Navbar() {
                         className={`flex items-center justify-between transition-all duration-500 ${
                             scrolled
                                 ? 'px-4 py-3 sm:px-6 sm:py-3.5 lg:px-8 lg:py-4'
-                                : 'px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6'
+                                : 'px-5 py-4 sm:px-8 sm:py-5 lg:px-6 lg:py-6'
                         }`}
                     >
                         {/* Logo */}
@@ -74,7 +74,11 @@ export default function Navbar() {
                                     : 'text-xl sm:text-2xl lg:text-3xl tracking-normal'
                             }`}
                         >
-                            <Link href="/">Trunal</Link>
+                            <div className="flex items-center">
+                                <img src="/trunal-logo.png" className="w-13" />
+                                {/* <img src="/trunal-logo.png" className="w-13" /> */}
+                                {/* <Link href="/">Trunal</Link> */}
+                            </div>
                         </div>
 
                         {/* Desktop Navigation Links */}
