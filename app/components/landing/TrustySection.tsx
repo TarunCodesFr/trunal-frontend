@@ -134,7 +134,7 @@ const TrustySection = () => {
         <div className={`${spaceGrotesk.className}`}>
             <div
                 ref={containerRef}
-                className="relative bg-transparent text-white overflow-hidden"
+                className="relative bg-black text-white overflow-hidden"
             >
                 {/* Animated gradient background */}
                 <div className="fixed inset-0 opacity-30">
