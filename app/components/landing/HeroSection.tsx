@@ -7,8 +7,8 @@ import {
     Play,
     Globe,
     Gauge,
-    Shield,
-    Layers
+    LockKeyhole,
+    FingerprintPattern
 } from 'lucide-react';
 
 const clientLogos = [
@@ -38,14 +38,14 @@ const capabilities = [
         desc: 'Sub-second loads, optimized Core Web Vitals, and blazing-fast UX.'
     },
     {
-        icon: Shield,
+        icon: LockKeyhole,
         title: 'Production-Grade Security',
         desc: 'Industry-standard security, compliance-ready infrastructure from day one.'
     },
     {
-        icon: Layers,
-        title: 'Full-Stack Development',
-        desc: 'End-to-end from system design to deployment, monitoring, and scale.'
+        icon: FingerprintPattern,
+        title: 'End to End Encryption',
+        desc: 'End-to-end encryption by our code to the database.'
     }
 ];
 

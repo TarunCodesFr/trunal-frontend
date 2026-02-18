@@ -1,327 +1,355 @@
 'use client';
 
-import { motion, useAnimationControls } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { Quote } from 'lucide-react';
-import { Kode_Mono } from 'next/font/google';
-import { div } from 'framer-motion/client';
-
-const kodeMono = Kode_Mono({
-    subsets: ['latin'],
-    display: 'swap',
-    // You can add other options:
-    weight: ['400', '500', '600', '700'], // Specify weights you need
-    variable: '--font-kode-mono' // Optional: CSS variable
-});
+import { useState } from 'react';
+import { Star, Quote } from 'lucide-react';
 
 interface Review {
     id: number;
     text: string;
+    rating: number;
     author: {
         name: string;
         role: string;
         company: string;
         avatar: string;
+        location: string;
     };
 }
 
-const Reviews = () => {
-    const reviews: Review[] = [
-        {
-            id: 1,
-            text: "The platform has completely transformed how we build and deploy applications. Our development cycle has been cut in half, and our team couldn't be happier.",
-            author: {
-                name: 'Sarah Chen',
-                role: 'Senior Backend Engineering Manager',
-                company: 'TechCorp',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah'
-            }
-        },
-        {
-            id: 2,
-            text: "We've been able to unify data access from multiple enterprise systems into a single API. This has dramatically improved our development velocity while maintaining flexibility.",
-            author: {
-                name: 'Michael Rodriguez',
-                role: 'Head of Engineering',
-                company: 'DataFlow',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Michael'
-            }
-        },
-        {
-            id: 3,
-            text: 'The documentation made it incredibly easy to get started. We jumped straight in without needing extensive training, and immediately saw the benefits.',
-            author: {
-                name: 'Emily Watson',
-                role: 'Lead Developer',
-                company: 'CloudSync',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Emily'
-            }
-        },
-        {
-            id: 4,
-            text: 'Outstanding developer experience. The type-safe approach has eliminated entire classes of bugs and made our codebase significantly more maintainable.',
-            author: {
-                name: 'James Park',
-                role: 'Staff Engineer',
-                company: 'BuildFast',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=James'
-            }
-        },
-        {
-            id: 5,
-            text: 'The performance improvements have been remarkable. Our API response times are now consistently under 100ms, which has greatly enhanced user experience.',
-            author: {
-                name: 'Lisa Anderson',
-                role: 'CTO',
-                company: 'ScaleUp',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa'
-            }
-        },
-        {
-            id: 6,
-            text: 'Migration from our legacy system was surprisingly smooth. The team saved countless hours of development time, and we can finally focus on features.',
-            author: {
-                name: 'David Kim',
-                role: 'Principal Engineer',
-                company: 'NextGen',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=David'
-            }
-        },
-        {
-            id: 7,
-            text: "The type safety and autocomplete features have made our development workflow incredibly efficient. It's become an essential tool for our entire team.",
-            author: {
-                name: 'Rachel Thompson',
-                role: 'Senior Developer',
-                company: 'CodeCraft',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Rachel'
-            }
-        },
-        {
-            id: 8,
-            text: "We've reduced our database query complexity by 60% while improving performance. The abstraction layer is exactly what we needed.",
-            author: {
-                name: 'Alex Martinez',
-                role: 'Database Architect',
-                company: 'DataCore',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Alex'
-            }
-        },
-        {
-            id: 9,
-            text: 'Deployment has become trivial. What used to take hours now happens in minutes, and everything just works reliably.',
-            author: {
-                name: 'Jennifer Lee',
-                role: 'DevOps Lead',
-                company: 'CloudOps',
-                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jennifer'
-            }
+const reviews: Review[] = [
+    {
+        id: 1,
+        text: 'Trunal completely transformed our online store. Sales jumped 3x within two months of launch. The team understood exactly what our customers needed.',
+        rating: 5,
+        author: {
+            name: 'Priya Sharma',
+            role: 'Founder',
+            company: 'Kalakriti Boutique',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=PriyaSharma&backgroundColor=b6e3f4',
+            location: 'Delhi'
         }
-    ];
+    },
+    {
+        id: 2,
+        text: 'The website they built for our restaurant chain loads instantly even on 4G. Our table booking rate doubled and customers love the experience.',
+        rating: 5,
+        author: {
+            name: 'Arjun Mehta',
+            role: 'Director',
+            company: 'Mehta Food Chain',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=ArjunMehta&backgroundColor=ffdfbf',
+            location: 'Mumbai'
+        }
+    },
+    {
+        id: 3,
+        text: 'Finally a web agency that delivers on time. Our real estate portal went live in 6 weeks and the quality is outstanding. Zero shortcuts taken.',
+        rating: 5,
+        author: {
+            name: 'Kavya Reddy',
+            role: 'CEO',
+            company: 'Reddy Properties',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=KavyaReddy&backgroundColor=c0aede',
+            location: 'Hyderabad'
+        }
+    },
+    {
+        id: 4,
+        text: 'We had tried two agencies before Trunal. Nobody else understood our vision like they did. The UI is clean, fast, and we get compliments every day.',
+        rating: 5,
+        author: {
+            name: 'Rohit Verma',
+            role: 'Co-Founder',
+            company: 'VedTech Solutions',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=RohitVerma&backgroundColor=d1d4f9',
+            location: 'Bengaluru'
+        }
+    },
+    {
+        id: 5,
+        text: 'Our clinic needed a booking system integrated with our website. Trunal built it seamlessly. Patient registrations increased by 40% in the first month.',
+        rating: 5,
+        author: {
+            name: 'Dr. Sneha Iyer',
+            role: 'Medical Director',
+            company: 'Iyer Health Clinic',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=SnehaIyer&backgroundColor=b6e3f4',
+            location: 'Chennai'
+        }
+    },
+    {
+        id: 6,
+        text: 'I was skeptical about a Varanasi agency handling enterprise work. They proved me completely wrong. World-class output, local pricing.',
+        rating: 5,
+        author: {
+            name: 'Ankit Agarwal',
+            role: 'CTO',
+            company: 'Agarwal Finserv',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=AnkitAgarwal&backgroundColor=ffd5dc',
+            location: 'Lucknow'
+        }
+    },
+    {
+        id: 7,
+        text: 'The SEO-optimized architecture they built helped us rank on page 1 for our target keywords in just 90 days. Organic traffic is up 5x.',
+        rating: 5,
+        author: {
+            name: 'Neha Kulkarni',
+            role: 'Marketing Head',
+            company: 'Kulkarni Traders',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=NehaKulkarni&backgroundColor=c0aede',
+            location: 'Pune'
+        }
+    },
+    {
+        id: 8,
+        text: 'Our e-learning platform handles 10,000 concurrent students without breaking a sweat. The performance engineering Trunal delivered is exceptional.',
+        rating: 5,
+        author: {
+            name: 'Vikram Singh',
+            role: 'Founder',
+            company: 'ShikshaPath EdTech',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=VikramSingh&backgroundColor=ffdfbf',
+            location: 'Jaipur'
+        }
+    },
+    {
+        id: 9,
+        text: 'From discovery to launch was exactly 8 weeks. They kept us updated daily. No surprises, no delays. Just solid, reliable delivery.',
+        rating: 5,
+        author: {
+            name: 'Pooja Nair',
+            role: 'Operations Head',
+            company: 'Nair Logistics',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=PoojaNair&backgroundColor=d1d4f9',
+            location: 'Kochi'
+        }
+    },
+    {
+        id: 10,
+        text: 'The mobile experience they designed feels native. Our app-like website has reduced our bounce rate from 72% to 28%. Incredible.',
+        rating: 5,
+        author: {
+            name: 'Siddharth Joshi',
+            role: 'Product Manager',
+            company: 'Joshi AutoParts',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=SiddharthJoshi&backgroundColor=ffd5dc',
+            location: 'Ahmedabad'
+        }
+    },
+    {
+        id: 11,
+        text: 'We needed a multilingual website for our saree brand targeting NRI clients. Trunal built it beautifully. Orders from USA and UK spiked immediately.',
+        rating: 5,
+        author: {
+            name: 'Sunita Gupta',
+            role: 'Owner',
+            company: 'Kashi Silk House',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=SunitaGupta&backgroundColor=b6e3f4',
+            location: 'Varanasi'
+        }
+    },
+    {
+        id: 12,
+        text: "Post-launch support has been exceptional. Any request we have is turned around within 24 hours. They're a true long-term partner.",
+        rating: 5,
+        author: {
+            name: 'Rahul Tiwari',
+            role: 'Director',
+            company: 'Tiwari Exports',
+            avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=RahulTiwari&backgroundColor=ffdfbf',
+            location: 'Surat'
+        }
+    }
+];
 
-    const duplicatedReviews = [...reviews, ...reviews, ...reviews];
+// Split into 3 columns
+const col1 = reviews.filter((_, i) => i % 3 === 0);
+const col2 = reviews.filter((_, i) => i % 3 === 1);
+const col3 = reviews.filter((_, i) => i % 3 === 2);
 
-    // Split reviews into 3 columns
-    const column1 = duplicatedReviews.filter((_, index) => index % 3 === 0);
-    const column2 = duplicatedReviews.filter((_, index) => index % 3 === 1);
-    const column3 = duplicatedReviews.filter((_, index) => index % 3 === 2);
-
+function ReviewCard({ review }: { review: Review }) {
     return (
-        <div className="relative bg-black text-white overflow-hidden py-32">
-            {/* Background elements matching the design system */}
-            <div className="fixed inset-0 opacity-30 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-violet-600/20 via-transparent to-cyan-600/20" />
+        <div className="review-card group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.05]">
+            {/* Stars */}
+            <div className="flex items-center gap-0.5 mb-4">
+                {[...Array(review.rating)].map((_, i) => (
+                    <Star
+                        key={i}
+                        size={13}
+                        className="fill-amber-400 text-amber-400"
+                    />
+                ))}
             </div>
 
-            {/* Grid overlay */}
-            <div className="fixed inset-0 opacity-[0.02] pointer-events-none">
-                <div
-                    className="h-full w-full"
-                    style={{
-                        backgroundImage: `
-            linear-gradient(to right, white 1px, transparent 1px),
-            linear-gradient(to bottom, white 1px, transparent 1px)
-          `,
-                        backgroundSize: '80px 80px'
-                    }}
-                />
-            </div>
+            {/* Quote icon + text */}
+            <Quote size={20} className="text-violet-400/30 mb-3" />
+            <p className="text-sm leading-relaxed text-zinc-400 mb-6">
+                "{review.text}"
+            </p>
 
-            <div className="relative max-w-[1400px] mx-auto px-6 lg:px-12">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-center mb-20"
-                >
-                    <div className={kodeMono.className}>
-                        <div className="inline-block mb-6">
-                            <span className="text-sm font-medium tracking-[0.3em] text-gray-400 uppercase">
-                                Reviews
-                            </span>
-                        </div>
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-light tracking-tight mb-6 underline text-gray-300">
-                            Trusted by more than{' '}
-                            <span className="font-medium bg-linear-to-r from-violet-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-                                40
-                            </span>
-                            <br />
-                            monthly active Brands globally
-                        </h2>
-                    </div>
-                </motion.div>
-
-                {/* Scrolling Reviews Grid */}
-                <div className="relative">
-                    {/* Gradient overlays for fade effect */}
-                    <div className="absolute top-0 left-0 right-0 h-32 bg-linear-to-b from-black to-transparent z-10 pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-black to-transparent z-10 pointer-events-none" />
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[600px] lg:max-h-[800px] overflow-hidden">
-                        {/* Column 1 - Scrolls down */}
-                        <ScrollingColumn
-                            reviews={column1}
-                            direction="down"
-                            speed={40}
-                        />
-
-                        {/* Column 2 - Scrolls up */}
-                        <ScrollingColumn
-                            reviews={column2}
-                            direction="up"
-                            speed={45}
-                        />
-
-                        {/* Column 3 - Scrolls down (hidden on mobile) */}
-                        <div className="hidden lg:block">
-                            <ScrollingColumn
-                                reviews={column3}
-                                direction="down"
-                                speed={42}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-interface ScrollingColumnProps {
-    reviews: Review[];
-    direction: 'up' | 'down';
-    speed: number;
-}
-
-const ScrollingColumn = ({
-    reviews,
-    direction,
-    speed
-}: ScrollingColumnProps) => {
-    const [isPaused, setIsPaused] = useState(false);
-
-    return (
-        <motion.div
-            className="flex flex-col gap-6"
-            initial={{ y: direction === 'down' ? '0%' : '-50%' }}
-            animate={{
-                y: direction === 'down' ? '-50%' : '0%'
-            }}
-            transition={{
-                duration: speed,
-                repeat: Infinity,
-                ease: 'linear'
-            }}
-            style={{
-                animationPlayState: isPaused ? 'paused' : 'running'
-            }}
-        >
-            {reviews.map((review, index) => (
-                <ReviewCard
-                    key={`${review.id}-${index}`}
-                    review={review}
-                    onHoverStart={() => setIsPaused(true)}
-                    onHoverEnd={() => setIsPaused(false)}
-                />
-            ))}
-        </motion.div>
-    );
-};
-
-interface ReviewCardProps {
-    review: Review;
-    onHoverStart: () => void;
-    onHoverEnd: () => void;
-}
-
-const ReviewCard = ({ review, onHoverStart, onHoverEnd }: ReviewCardProps) => {
-    return (
-        <div className={kodeMono.className}>
-            <motion.div
-                className="group relative"
-                onHoverStart={onHoverStart}
-                onHoverEnd={onHoverEnd}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-linear-to-br from-violet-600/0 to-cyan-600/0 group-hover:from-violet-600/10 group-hover:to-cyan-600/10 rounded-2xl blur-xl transition-all duration-500" />
-
-                {/* Card content */}
-                <div className="relative border border-white/10 bg-white/2 lg:backdrop-blur-sm rounded-2xl p-8 group-hover:border-white/20 transition-all duration-300">
-                    {/* Quote icon */}
-                    <div className="mb-6 opacity-20 group-hover:opacity-40 transition-opacity duration-300">
-                        <Quote size={32} className="text-violet-400" />
-                    </div>
-
-                    {/* Review text */}
-                    <p className="text-gray-300 leading-relaxed mb-8 text-base">
-                        {review.text}
-                    </p>
-
-                    {/* Author info */}
-                    <div className="flex items-center gap-4">
-                        {/* Avatar */}
-                        <motion.div
-                            className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-violet-400/50 transition-colors duration-300"
-                            whileHover={{ scale: 1.1 }}
-                        >
-                            <img
-                                src={review.author.avatar}
-                                alt={review.author.name}
-                                className="w-full h-full object-cover"
-                            />
-                        </motion.div>
-
-                        {/* Author details */}
-                        <div className="flex-1 min-w-0">
-                            <div className="font-medium text-white truncate">
-                                {review.author.name}
-                            </div>
-                            <div className="text-sm text-gray-500 truncate">
-                                {review.author.role}
-                            </div>
-                            <div className="text-sm font-medium mt-0.5">
-                                <span className="text-violet-400">
-                                    / {review.author.company}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Animated gradient bar at bottom */}
-                    <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-linear-to-r from-violet-400 via-cyan-400 to-emerald-400 rounded-b-2xl origin-left"
-                        initial={{ scaleX: 0 }}
-                        whileHover={{ scaleX: 1 }}
-                        transition={{ duration: 0.3 }}
+            {/* Author */}
+            <div className="flex items-center gap-3">
+                <div className="relative h-10 w-10 shrink-0 rounded-full overflow-hidden border border-white/10 bg-zinc-800">
+                    <img
+                        src={review.author.avatar}
+                        alt={review.author.name}
+                        className="h-full w-full object-cover"
+                        loading="lazy"
                     />
                 </div>
-            </motion.div>
+                <div className="min-w-0">
+                    <p className="text-sm font-semibold text-white truncate">
+                        {review.author.name}
+                    </p>
+                    <p className="text-xs text-zinc-500 truncate">
+                        {review.author.role},{' '}
+                        <span className="text-violet-400/80">
+                            {review.author.company}
+                        </span>
+                    </p>
+                </div>
+                <span className="ml-auto shrink-0 rounded-full border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-zinc-600">
+                    {review.author.location}
+                </span>
+            </div>
+
+            {/* Bottom gradient bar — reveals on hover */}
+            <div className="review-bar mt-5 h-px w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400 transition-transform duration-300 group-hover:scale-x-100" />
         </div>
     );
-};
+}
 
-export default Reviews;
+interface ScrollColumnProps {
+    items: Review[];
+    direction: 'up' | 'down';
+    durationSecs: number;
+}
+
+function ScrollColumn({ items, direction, durationSecs }: ScrollColumnProps) {
+    const [paused, setPaused] = useState(false);
+    const doubled = [...items, ...items];
+
+    const animationStyle: React.CSSProperties = {
+        animationName: direction === 'up' ? 'scroll-up' : 'scroll-down',
+        animationDuration: `${durationSecs}s`,
+        animationTimingFunction: 'linear',
+        animationIterationCount: 'infinite',
+        animationPlayState: paused ? 'paused' : 'running'
+    };
+
+    return (
+        <div
+            className="relative overflow-hidden"
+            style={{ height: '700px' }}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+        >
+            <div className="flex flex-col gap-5" style={animationStyle}>
+                {doubled.map((review, i) => (
+                    <ReviewCard key={`${review.id}-${i}`} review={review} />
+                ))}
+            </div>
+
+            {/* Top + bottom fade masks */}
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#09090b] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#09090b] to-transparent z-10" />
+        </div>
+    );
+}
+
+export default function Reviews() {
+    return (
+        <section className="relative bg-[#09090b] text-white overflow-hidden py-28">
+            {/* Subtle radial glow */}
+            <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                    background:
+                        'radial-gradient(ellipse 70% 40% at 50% 60%, rgba(120,119,198,0.07), transparent)'
+                }}
+                aria-hidden="true"
+            />
+
+            <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+                {/* Section header */}
+                <div className="text-center mb-16">
+                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-[11px] font-medium tracking-[0.15em] uppercase text-zinc-500 mb-6 select-none">
+                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400 reviews-pulse" />
+                        Client Testimonials
+                    </span>
+
+                    <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-tight mb-4">
+                        Trusted by{' '}
+                        <span className="hero-headline-gradient">
+                            50+ businesses
+                        </span>
+                        <br className="hidden sm:block" /> across Varanasi
+                    </h2>
+                    <p className="text-zinc-500 text-base max-w-xl mx-auto leading-relaxed">
+                        From local shops to scaling startups — here's what our
+                        partners say about working with Trunal.
+                    </p>
+
+                    {/* Aggregate rating strip */}
+                    <div className="mt-8 inline-flex items-center gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-8 py-4">
+                        <div className="text-center">
+                            <p className="text-3xl font-bold text-white">5.0</p>
+                            <div className="flex gap-0.5 mt-1 justify-center">
+                                {[...Array(5)].map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        size={12}
+                                        className="fill-amber-400 text-amber-400"
+                                    />
+                                ))}
+                            </div>
+                            <p className="text-[10px] text-zinc-600 mt-1">
+                                Avg. rating
+                            </p>
+                        </div>
+                        <div className="w-px h-12 bg-white/[0.07]" />
+                        <div className="text-center">
+                            <p className="text-3xl font-bold text-white">50+</p>
+                            <p className="text-[10px] text-zinc-600 mt-1 leading-tight">
+                                Happy
+                                <br />
+                                clients
+                            </p>
+                        </div>
+                        <div className="w-px h-12 bg-white/[0.07]" />
+                        <div className="text-center">
+                            <p className="text-3xl font-bold text-white">98%</p>
+                            <p className="text-[10px] text-zinc-600 mt-1 leading-tight">
+                                Would
+                                <br />
+                                recommend
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Scrolling columns */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <ScrollColumn
+                        items={col1}
+                        direction="up"
+                        durationSecs={30}
+                    />
+                    <ScrollColumn
+                        items={col2}
+                        direction="down"
+                        durationSecs={36}
+                    />
+                    <div className="hidden lg:block">
+                        <ScrollColumn
+                            items={col3}
+                            direction="up"
+                            durationSecs={33}
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

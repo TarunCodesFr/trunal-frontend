@@ -333,3 +333,52 @@
         0 20px 60px -12px rgba(0, 0, 0, 0.5),
         0 0 80px -20px rgba(120, 119, 198, 0.08);
 }
+
+.whyus-gradient {
+    background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 50%, #34d399 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hero-gradient-shift 8s ease-in-out infinite;
+}
+
+@keyframes scroll-up {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50%);
+    }
+}
+@keyframes scroll-down {
+    from {
+        transform: translateY(-50%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.reviews-scroll-up {
+    animation: scroll-up var(--duration, 32s) linear infinite;
+}
+.reviews-scroll-down {
+    animation: scroll-down var(--duration, 32s) linear infinite;
+}
+
+/* Reviews amber pulse */
+.reviews-pulse {
+    animation: reviews-pulse-ring 2s ease-in-out infinite;
+}
+@keyframes reviews-pulse-ring {
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.5);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 0 5px rgba(251, 191, 36, 0);
+    }
+}
