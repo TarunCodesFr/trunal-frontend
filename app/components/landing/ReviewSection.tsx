@@ -26,7 +26,7 @@ const reviews: Review[] = [
             role: 'Founder',
             company: 'Kalakriti Boutique',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=PriyaSharma&backgroundColor=b6e3f4',
-            location: 'Delhi'
+            location: 'Varanasi'
         }
     },
     {
@@ -38,7 +38,7 @@ const reviews: Review[] = [
             role: 'Director',
             company: 'Mehta Food Chain',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=ArjunMehta&backgroundColor=ffdfbf',
-            location: 'Mumbai'
+            location: 'Varanasi'
         }
     },
     {
@@ -50,7 +50,7 @@ const reviews: Review[] = [
             role: 'CEO',
             company: 'Reddy Properties',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=KavyaReddy&backgroundColor=c0aede',
-            location: 'Hyderabad'
+            location: 'Varanasi'
         }
     },
     {
@@ -62,7 +62,7 @@ const reviews: Review[] = [
             role: 'Co-Founder',
             company: 'VedTech Solutions',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=RohitVerma&backgroundColor=d1d4f9',
-            location: 'Bengaluru'
+            location: 'Varanasi'
         }
     },
     {
@@ -74,7 +74,7 @@ const reviews: Review[] = [
             role: 'Medical Director',
             company: 'Iyer Health Clinic',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=SnehaIyer&backgroundColor=b6e3f4',
-            location: 'Chennai'
+            location: 'Varanasi'
         }
     },
     {
@@ -86,7 +86,7 @@ const reviews: Review[] = [
             role: 'CTO',
             company: 'Agarwal Finserv',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=AnkitAgarwal&backgroundColor=ffd5dc',
-            location: 'Lucknow'
+            location: 'Varanasi'
         }
     },
     {
@@ -98,7 +98,7 @@ const reviews: Review[] = [
             role: 'Marketing Head',
             company: 'Kulkarni Traders',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=NehaKulkarni&backgroundColor=c0aede',
-            location: 'Pune'
+            location: 'Varanasi'
         }
     },
     {
@@ -110,7 +110,7 @@ const reviews: Review[] = [
             role: 'Founder',
             company: 'ShikshaPath EdTech',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=VikramSingh&backgroundColor=ffdfbf',
-            location: 'Jaipur'
+            location: 'Varanasi'
         }
     },
     {
@@ -122,7 +122,7 @@ const reviews: Review[] = [
             role: 'Operations Head',
             company: 'Nair Logistics',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=PoojaNair&backgroundColor=d1d4f9',
-            location: 'Kochi'
+            location: 'Varanasi'
         }
     },
     {
@@ -134,7 +134,7 @@ const reviews: Review[] = [
             role: 'Product Manager',
             company: 'Joshi AutoParts',
             avatar: 'https://api.dicebear.com/9.x/notionists/svg?seed=SiddharthJoshi&backgroundColor=ffd5dc',
-            location: 'Ahmedabad'
+            location: 'Varanasi'
         }
     },
     {
