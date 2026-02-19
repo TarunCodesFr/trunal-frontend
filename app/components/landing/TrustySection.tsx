@@ -2,6 +2,13 @@
 
 import Image from 'next/image';
 import {
+    DoodleSparkle,
+    DoodleStar,
+    DoodleSpiral,
+    DoodleLines,
+    DoodleWavyLine
+} from './Doodle';
+import {
     ArrowRight,
     CheckCircle2,
     Clock,
@@ -125,6 +132,35 @@ const checkpoints = [
 export default function TrustySection() {
     return (
         <section className="relative bg-[#09090b] text-white">
+            <DoodleSparkle
+                className="absolute top-24 left-8 w-7 h-7 pointer-events-none"
+                opacity={0.35}
+                color="#a78bfa"
+            />
+            {/* Star far right */}
+            <DoodleStar
+                className="absolute top-32 right-16 w-10 h-10 pointer-events-none"
+                opacity={0.3}
+                color="#fbbf24"
+            />
+            {/* Spiral bottom-left corner */}
+            <DoodleSpiral
+                className="absolute bottom-40 left-6 w-12 h-12 pointer-events-none"
+                opacity={0.25}
+                color="#34d399"
+            />
+            {/* Lines below stats */}
+            <DoodleLines
+                className="absolute bottom-32 right-10 w-16 pointer-events-none rotate-12"
+                opacity={0.22}
+                color="#fb923c"
+            />
+            {/* Wavy line left edge */}
+            <DoodleWavyLine
+                className="absolute top-48 left-3 h-32 pointer-events-none hidden lg:block"
+                opacity={0.2}
+                color="#22d3ee"
+            />
             {/* Subtle top separator */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
