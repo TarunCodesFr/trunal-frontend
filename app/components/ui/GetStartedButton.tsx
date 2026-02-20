@@ -23,7 +23,7 @@ export function GetStartedButtonPC({
                 onClick?.();
                 if (href) router.push(href);
             }}
-            className={`cursor-pointer hidden lg:block bg-gradient-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 hover:shadow-lg hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap ${
+            className={`cursor-pointer hidden lg:block bg-linear-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 hover:shadow-lg hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap ${
                 scrolled ? 'px-5 py-2 text-sm' : 'px-6 py-2.5 text-base'
             }`}
         >
@@ -47,7 +47,7 @@ export function GetStartedButtonMobile({
                 onClick?.();
                 if (href) router.push(href);
             }}
-            className={`hidden lg:block bg-gradient-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 hover:shadow-lg hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap ${
+            className={`hidden lg:block bg-linear-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 hover:shadow-lg hover:shadow-white/30 hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap ${
                 scrolled ? 'px-5 py-2 text-sm' : 'px-6 py-2.5 text-base'
             }`}
         >

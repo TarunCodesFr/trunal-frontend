@@ -68,14 +68,14 @@ export default function Navbar() {
                     >
                         {/* Logo */}
                         <div
-                            className={`font-black bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transition-all duration-500 whitespace-nowrap ${
+                            className={`font-black bg-linear-to-r from-white to-gray-400 bg-clip-text text-transparent transition-all duration-500 whitespace-nowrap ${
                                 scrolled
                                     ? 'text-lg sm:text-xl lg:text-2xl tracking-tight'
                                     : 'text-xl sm:text-2xl lg:text-3xl tracking-normal'
                             }`}
                         >
                             <div className="flex items-center">
-                                <img src="/trunal-logo.png" className="w-13" />
+                                <img src="/trunal-logo.png" className="w-14" />
                                 {/* <img src="/trunal-logo.png" className="w-13" /> */}
                                 {/* <Link href="/">Trunal</Link> */}
                             </div>
@@ -96,7 +96,7 @@ export default function Navbar() {
                                         }`}
                                     >
                                         {link.label}
-                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-white to-gray-500 transition-all duration-300 group-hover:w-full"></span>
+                                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-linear-to-r from-white to-gray-500 transition-all duration-300 group-hover:w-full"></span>
                                     </a>
                                 </li>
                             ))}
@@ -117,19 +117,19 @@ export default function Navbar() {
                             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
                         >
                             <span
-                                className={`w-full h-0.5 bg-gradient-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
+                                className={`w-full h-0.5 bg-linear-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
                                     menuOpen
                                         ? 'rotate-45 translate-y-2'
                                         : 'rotate-0 translate-y-0'
                                 }`}
                             ></span>
                             <span
-                                className={`w-full h-0.5 bg-gradient-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
+                                className={`w-full h-0.5 bg-linear-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
                                     menuOpen ? 'opacity-0' : 'opacity-100'
                                 }`}
                             ></span>
                             <span
-                                className={`w-full h-0.5 bg-gradient-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
+                                className={`w-full h-0.5 bg-linear-to-r from-white to-gray-400 rounded-full transition-all duration-300 ${
                                     menuOpen
                                         ? '-rotate-45 -translate-y-2'
                                         : 'rotate-0 translate-y-0'
@@ -139,7 +139,7 @@ export default function Navbar() {
 
                         {/* Mobile CTA Button */}
                         <button
-                            className={`lg:hidden bg-gradient-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 transition-all duration-300 whitespace-nowrap ${
+                            className={`lg:hidden bg-linear-to-br from-white to-gray-300 text-black font-semibold rounded-lg shadow-md shadow-white/20 transition-all duration-300 whitespace-nowrap ${
                                 menuOpen ? 'hidden' : 'block'
                             } ${scrolled ? 'px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm' : 'px-4 py-2 text-sm sm:px-5 sm:py-2.5'}`}
                             onClick={() => router.push('/login')}

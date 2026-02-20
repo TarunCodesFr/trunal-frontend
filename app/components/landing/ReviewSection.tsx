@@ -163,14 +163,16 @@ const reviews: Review[] = [
     }
 ];
 
-// Split into 3 columns
 const col1 = reviews.filter((_, i) => i % 3 === 0);
 const col2 = reviews.filter((_, i) => i % 3 === 1);
 const col3 = reviews.filter((_, i) => i % 3 === 2);
 
 function ReviewCard({ review }: { review: Review }) {
     return (
-        <div className="review-card group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.05]">
+        <div className="group rounded-2xl border border-white/[0.07] bg-white/[0.03] p-6 transition-all duration-300 hover:border-cyan-500/25 hover:bg-cyan-500/[0.04] relative overflow-hidden">
+            {/* Corner accent */}
+            <span className="absolute top-0 left-0 w-4 h-4 border-t border-l border-cyan-400/20 rounded-tl-2xl group-hover:border-cyan-400/50 transition-colors duration-300" />
+
             {/* Stars */}
             <div className="flex items-center gap-0.5 mb-4">
                 {[...Array(review.rating)].map((_, i) => (
@@ -183,14 +185,14 @@ function ReviewCard({ review }: { review: Review }) {
             </div>
 
             {/* Quote icon + text */}
-            <Quote size={20} className="text-violet-400/30 mb-3" />
-            <p className="text-sm leading-relaxed text-zinc-400 mb-6">
-                "{review.text}"
+            <Quote size={20} className="text-cyan-400/20 mb-3" />
+            <p className="text-sm leading-relaxed text-white/40 mb-6">
+                &ldquo;{review.text}&rdquo;
             </p>
 
             {/* Author */}
             <div className="flex items-center gap-3">
-                <div className="relative h-10 w-10 shrink-0 rounded-full overflow-hidden border border-white/10 bg-zinc-800">
+                <div className="relative h-10 w-10 shrink-0 rounded-full overflow-hidden border border-cyan-500/20 bg-white/[0.05]">
                     <img
                         src={review.author.avatar}
                         alt={review.author.name}
@@ -199,34 +201,36 @@ function ReviewCard({ review }: { review: Review }) {
                     />
                 </div>
                 <div className="min-w-0">
-                    <p className="text-sm font-semibold text-white truncate">
+                    <p className="text-sm font-semibold text-white/90 truncate">
                         {review.author.name}
                     </p>
-                    <p className="text-xs text-zinc-500 truncate">
+                    <p className="text-xs text-white/30 truncate">
                         {review.author.role},{' '}
-                        <span className="text-violet-400/80">
+                        <span className="text-cyan-400/60">
                             {review.author.company}
                         </span>
                     </p>
                 </div>
-                <span className="ml-auto shrink-0 rounded-full border border-white/[0.06] bg-white/[0.03] px-2.5 py-1 text-[10px] font-medium text-zinc-600">
+                <span className="ml-auto shrink-0 rounded-full border border-cyan-500/15 bg-cyan-500/[0.06] px-2.5 py-1 text-[10px] font-mono text-cyan-400/50">
                     {review.author.location}
                 </span>
             </div>
 
-            {/* Bottom gradient bar — reveals on hover */}
-            <div className="review-bar mt-5 h-px w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-violet-400 via-cyan-400 to-emerald-400 transition-transform duration-300 group-hover:scale-x-100" />
+            {/* Bottom gradient bar */}
+            <div className="mt-5 h-px w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 transition-transform duration-300 group-hover:scale-x-100" />
         </div>
     );
 }
 
-interface ScrollColumnProps {
+function ScrollColumn({
+    items,
+    direction,
+    durationSecs
+}: {
     items: Review[];
     direction: 'up' | 'down';
     durationSecs: number;
-}
-
-function ScrollColumn({ items, direction, durationSecs }: ScrollColumnProps) {
+}) {
     const [paused, setPaused] = useState(false);
     const doubled = [...items, ...items];
 
@@ -250,51 +254,81 @@ function ScrollColumn({ items, direction, durationSecs }: ScrollColumnProps) {
                     <ReviewCard key={`${review.id}-${i}`} review={review} />
                 ))}
             </div>
-
-            {/* Top + bottom fade masks */}
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#09090b] to-transparent z-10" />
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#09090b] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#020d1a] to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#020d1a] to-transparent z-10" />
         </div>
     );
 }
 
 export default function Reviews() {
     return (
-        <section className="relative bg-[#09090b] text-white overflow-hidden py-28">
-            {/* Subtle radial glow */}
+        <section className="relative bg-[#020d1a] text-white overflow-hidden py-28">
+            {/* Grid bg */}
             <div
-                className="pointer-events-none absolute inset-0"
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0"
+                style={{
+                    backgroundImage:
+                        'linear-gradient(rgba(34,211,238,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.025) 1px, transparent 1px)',
+                    backgroundSize: '60px 60px'
+                }}
+            />
+            {/* Glow */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0"
                 style={{
                     background:
-                        'radial-gradient(ellipse 70% 40% at 50% 60%, rgba(120,119,198,0.07), transparent)'
+                        'radial-gradient(ellipse 70% 40% at 50% 60%, rgba(34,211,238,0.05), transparent)'
                 }}
-                aria-hidden="true"
             />
+            {/* Separator */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
             <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
                 {/* Section header */}
                 <div className="text-center mb-16">
-                    <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2 text-[11px] font-medium tracking-[0.15em] uppercase text-zinc-500 mb-6 select-none">
-                        <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400 reviews-pulse" />
-                        Client Testimonials
-                    </span>
+                    <div className="inline-flex items-center gap-3 mb-6">
+                        <span className="h-px w-8 bg-cyan-400/40" />
+                        <span className="inline-flex items-center gap-2 text-[11px] font-mono text-cyan-400/60 tracking-[0.2em] uppercase select-none">
+                            <span
+                                className="inline-block h-1.5 w-1.5 rounded-full bg-amber-400"
+                                style={{
+                                    animation:
+                                        'hero-pulse-ring 2s ease-in-out infinite'
+                                }}
+                            />
+                            Client Testimonials
+                        </span>
+                        <span className="h-px w-8 bg-cyan-400/40" />
+                    </div>
 
-                    <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-tight mb-4">
+                    <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-extrabold leading-tight tracking-tight mb-4">
                         Trusted by{' '}
-                        <span className="hero-headline-gradient">
+                        <span
+                            className="bg-gradient-to-r from-cyan-300 via-blue-400 to-cyan-400 bg-clip-text text-transparent"
+                            style={{ WebkitBackgroundClip: 'text' }}
+                        >
                             50+ businesses
                         </span>
                         <br className="hidden sm:block" /> across Varanasi
                     </h2>
-                    <p className="text-zinc-500 text-base max-w-xl mx-auto leading-relaxed">
-                        From local shops to scaling startups — here's what our
-                        partners say about working with Trunal.
+                    <p className="text-white/40 text-base max-w-xl mx-auto leading-relaxed">
+                        From local shops to scaling startups — here&apos;s what
+                        our partners say about working with Trunal.
                     </p>
 
                     {/* Aggregate rating strip */}
-                    <div className="mt-8 inline-flex items-center gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.03] px-8 py-4">
+                    <div
+                        className="mt-8 inline-flex items-center gap-6 rounded-2xl border border-cyan-500/15 bg-white/[0.03] px-8 py-4"
+                        style={{
+                            boxShadow: '0 0 30px 2px rgba(34,211,238,0.05)'
+                        }}
+                    >
                         <div className="text-center">
-                            <p className="text-3xl font-bold text-white">5.0</p>
+                            <p className="text-3xl font-extrabold font-mono text-white">
+                                5.0
+                            </p>
                             <div className="flex gap-0.5 mt-1 justify-center">
                                 {[...Array(5)].map((_, i) => (
                                     <Star
@@ -304,23 +338,27 @@ export default function Reviews() {
                                     />
                                 ))}
                             </div>
-                            <p className="text-[10px] text-zinc-600 mt-1">
+                            <p className="text-[10px] font-mono text-white/25 mt-1">
                                 Avg. rating
                             </p>
                         </div>
-                        <div className="w-px h-12 bg-white/[0.07]" />
+                        <div className="w-px h-12 bg-cyan-500/15" />
                         <div className="text-center">
-                            <p className="text-3xl font-bold text-white">50+</p>
-                            <p className="text-[10px] text-zinc-600 mt-1 leading-tight">
+                            <p className="text-3xl font-extrabold font-mono text-white">
+                                50+
+                            </p>
+                            <p className="text-[10px] font-mono text-white/25 mt-1 leading-tight">
                                 Happy
                                 <br />
                                 clients
                             </p>
                         </div>
-                        <div className="w-px h-12 bg-white/[0.07]" />
+                        <div className="w-px h-12 bg-cyan-500/15" />
                         <div className="text-center">
-                            <p className="text-3xl font-bold text-white">98%</p>
-                            <p className="text-[10px] text-zinc-600 mt-1 leading-tight">
+                            <p className="text-3xl font-extrabold font-mono text-white">
+                                98%
+                            </p>
+                            <p className="text-[10px] font-mono text-white/25 mt-1 leading-tight">
                                 Would
                                 <br />
                                 recommend
