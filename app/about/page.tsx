@@ -196,27 +196,17 @@ export default function AboutPage() {
 
     const timeline = [
         {
-            year: '2019',
+            year: '2025',
             title: 'Founded Trunal',
             desc: 'Started as a freelance dev studio — two clients, zero budget, unlimited vision.'
         },
         {
-            year: '2021',
-            title: 'First Enterprise Deal',
-            desc: 'Landed a 6-figure contract delivering a custom SaaS platform for a logistics startup.'
-        },
-        {
-            year: '2022',
-            title: 'Team of 10',
-            desc: 'Grew the team with designers, developers & strategists across 3 continents.'
-        },
-        {
-            year: '2024',
+            year: '2026',
             title: '50+ Projects Shipped',
             desc: 'From MVPs to full-scale platforms — consistently on time and over expectations.'
         },
         {
-            year: '2026',
+            year: 'VISION',
             title: 'Now',
             desc: 'Building the future — one pixel-perfect product at a time.'
         }

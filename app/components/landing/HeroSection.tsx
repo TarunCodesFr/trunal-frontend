@@ -19,7 +19,7 @@ const clientLogos = [
 ];
 
 const stats = [
-    { value: '150+', label: 'Projects Delivered' },
+    { value: '50+', label: 'Projects Delivered' },
     { value: '99.9%', label: 'Uptime SLA' },
     { value: '50+', label: 'Enterprise Clients' },
     { value: '<1s', label: 'Avg Load Time' }
@@ -330,7 +330,7 @@ export default function Hero() {
                                 </span>
                                 <div>
                                     <p className="text-xs font-bold text-white">
-                                        150+
+                                        50+
                                     </p>
                                     <p className="text-[10px] font-mono text-cyan-400/50">
                                         Projects Live
