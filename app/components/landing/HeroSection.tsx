@@ -171,7 +171,7 @@ export default function Hero() {
                         {/* CTAs */}
                         <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4">
                             <a
-                                href="/portal"
+                                href="/contact"
                                 className="group inline-flex items-center gap-2.5 rounded-full bg-cyan-400 px-8 py-4 text-sm font-bold text-[#020d1a] tracking-wide transition-all duration-200 hover:bg-cyan-300 active:scale-[0.97]"
                                 style={{
                                     boxShadow:
