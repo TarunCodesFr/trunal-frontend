@@ -386,7 +386,7 @@ export default function TrustySection() {
                                 </ul>
                             </div>
                             <a
-                                href="#contact"
+                                href="/contact"
                                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-400 px-6 py-3.5 text-sm font-bold text-[#020d1a] hover:bg-cyan-300 active:scale-[0.97] transition-all duration-200"
                                 style={{
                                     boxShadow:
