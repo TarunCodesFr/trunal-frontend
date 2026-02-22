@@ -145,7 +145,7 @@ export default function Hero() {
                         <div className="hidden lg:flex items-center gap-3 mb-6">
                             <span className="h-px w-10 bg-cyan-400/50" />
                             <span className="text-[10px] font-mono text-cyan-400/60 tracking-[0.3em] uppercase">
-                                [ EST. 2019 — TRUNAL.DEV ]
+                                [ EST. 2025 — TRUNAL.IN ]
                             </span>
                         </div>
 

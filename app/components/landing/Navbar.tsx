@@ -37,7 +37,8 @@ export default function Navbar() {
 
     const navLinks = [
         { href: '/portal', label: 'Portal' },
-        { href: '/jobs', label: 'Careers' },
+        { href: '/contact', label: 'Contact' },
+        // { href: '/jobs', label: 'Careers' },
         { href: '/pricing', label: 'Pricing' },
         { href: '/about', label: 'About' }
     ];
@@ -75,7 +76,12 @@ export default function Navbar() {
                             }`}
                         >
                             <div className="flex items-center">
-                                <img src="/trunal-logo.png" className="w-14" />
+                                <Link href="/">
+                                    <img
+                                        src="/trunal-logo.png"
+                                        className="w-14"
+                                    />
+                                </Link>
                                 {/* <img src="/trunal-logo.png" className="w-13" /> */}
                                 {/* <Link href="/">Trunal</Link> */}
                             </div>
