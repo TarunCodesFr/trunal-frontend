@@ -309,7 +309,7 @@
     }
 }
 
-/* Floating cards — lightweight CSS transforms */
+/* Floating cards lightweight CSS transforms */
 .hero-float-slow {
     animation: hero-float 6s ease-in-out infinite;
 }

@@ -115,12 +115,12 @@ const differentiators = [
 ];
 
 const checkpoints = [
-    'No templates — everything is custom-built',
+    'No templates, everything is custom-built',
     'Dedicated project manager from day one',
     'Google-ranking-ready from launch',
     'Fast delivery without cutting corners',
     'Transparent pricing, no hidden fees',
-    '100% owned by you — full code handover'
+    '100% owned by you, full code handover'
 ];
 
 const processSteps = [

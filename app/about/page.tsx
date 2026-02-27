@@ -198,17 +198,17 @@ export default function AboutPage() {
         {
             year: '2025',
             title: 'Founded Trunal',
-            desc: 'Started as a freelance dev studio — two clients, zero budget, unlimited vision.'
+            desc: 'Started as a freelance with two clients, zero budget, unlimited vision.'
         },
         {
             year: '2026',
             title: '50+ Projects Shipped',
-            desc: 'From MVPs to full-scale platforms — consistently on time and over expectations.'
+            desc: 'From MVPs to full-scale platforms, consistently on time and over expectations.'
         },
         {
             year: 'VISION',
             title: 'Now',
-            desc: 'Building the future — one pixel-perfect product at a time.'
+            desc: 'Building the future one pixel-perfect product at a time.'
         }
     ];
 
@@ -228,7 +228,7 @@ export default function AboutPage() {
                         }}
                     />
 
-                    {/* ── Glow orbs (static, no animation — low-end friendly) ── */}
+                    {/* ── Glow orbs (static, no animation  low-end friendly) ── */}
                     <div
                         aria-hidden
                         className="pointer-events-none fixed top-[-200px] left-[-200px] w-[600px] h-[600px] rounded-full bg-cyan-500/[0.07] blur-[120px] z-0"
@@ -269,7 +269,7 @@ export default function AboutPage() {
                             <p className="max-w-2xl text-base sm:text-lg text-white/40 leading-relaxed font-light">
                                 Trunal is a forward-thinking web development
                                 agency fusing engineering precision with design
-                                excellence — building products that perform,
+                                excellence. Building products that perform,
                                 convert, and endure.
                             </p>
                         </div>
@@ -318,7 +318,7 @@ export default function AboutPage() {
                                     <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden bg-white/[0.03]">
                                         <Image
                                             src="/myphotoweb.png"
-                                            alt="Tarun Srivastava — Founder & CEO of Trunal"
+                                            alt="Tarun Srivastava | Founder & CEO of Trunal"
                                             fill
                                             className="object-cover object-top"
                                             sizes="(max-width: 640px) 280px, 320px"
@@ -370,7 +370,7 @@ export default function AboutPage() {
                                         </span>
                                     </h2>
                                     <p className="text-sm sm:text-base text-white/45 leading-relaxed">
-                                        I&apos;m Tarun Srivastava — a developer,
+                                        I&apos;m Tarun Srivastava a developer,
                                         designer, and digital strategist with a
                                         deep obsession for the craft of building
                                         on the web. I founded Trunal to bridge
@@ -381,7 +381,7 @@ export default function AboutPage() {
 
                                 <p className="text-sm text-white/40 leading-relaxed">
                                     Every project we take on is treated like our
-                                    own startup — with strategic thinking, clean
+                                    own startup with strategic thinking, clean
                                     code, and pixel-precise design. We build
                                     fast, we build right, and we build to last.
                                 </p>
@@ -483,7 +483,7 @@ export default function AboutPage() {
                                     {
                                         icon: '◈',
                                         title: 'Performance First',
-                                        desc: 'We optimize relentlessly. Sub-second loads are not a goal — they are the baseline.'
+                                        desc: 'We optimize relentlessly. Sub-second loads are not a goal they are the baseline.'
                                     },
                                     {
                                         icon: '◉',
@@ -493,7 +493,7 @@ export default function AboutPage() {
                                     {
                                         icon: '◎',
                                         title: 'Built to Scale',
-                                        desc: 'Architecture that grows with you — from MVP to millions of users without a rebuild.'
+                                        desc: 'Architecture that grows with you from MVP to millions of users without a rebuild.'
                                     }
                                 ].map((v, i) => {
                                     const { ref, visible } = useInViewCard(i);
@@ -555,7 +555,7 @@ export default function AboutPage() {
                                 </h2>
                                 <p className="text-sm text-white/40 mb-8 max-w-md mx-auto">
                                     Whether you have a full brief or just a raw
-                                    idea — we&apos;re ready to architect your
+                                    idea, we&apos;re ready to architect your
                                     vision.
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
