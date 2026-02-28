@@ -38,6 +38,7 @@ export default function DashboardLayoutWrapper({
     // Determines title based on path
     const getPageTitle = () => {
         if (pathname.includes('/project/')) return 'Project Chat';
+        if (pathname.includes('/admin')) return 'Admin Panel';
         return 'Overview';
     };
 

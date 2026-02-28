@@ -11,6 +11,7 @@ import {
     Map,
     PieChart,
     Settings2,
+    Shield,
     SquareTerminal
 } from 'lucide-react';
 
@@ -23,10 +24,18 @@ import {
     SidebarContent,
     SidebarFooter,
     SidebarHeader,
-    SidebarRail
+    SidebarRail,
+    SidebarGroup,
+    SidebarGroupLabel,
+    SidebarGroupContent,
+    SidebarMenu,
+    SidebarMenuItem,
+    SidebarMenuButton
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 
 type User = {
+    user_id?: number;
     email: string;
     username: string;
     role: string;
@@ -37,7 +46,6 @@ type AppSidebarProps = React.ComponentProps<typeof Sidebar> & {
     projects: any[];
 };
 
-// This is sample data.
 const data = {
     teams: [
         {
@@ -46,7 +54,6 @@ const data = {
             plan: 'Dashboard'
         }
     ],
-    // ... existing navMain and others remain unchanged or we can keep them static for now
     navMain: [
         {
             title: 'Playground',
@@ -54,21 +61,11 @@ const data = {
             icon: SquareTerminal,
             isActive: true,
             items: [
-                {
-                    title: 'History',
-                    url: '#'
-                },
-                {
-                    title: 'Starred',
-                    url: '#'
-                },
-                {
-                    title: 'Settings',
-                    url: '#'
-                }
+                { title: 'History', url: '#' },
+                { title: 'Starred', url: '#' },
+                { title: 'Settings', url: '#' }
             ]
         }
-        // ... keeping other items briefly for context, though implementation focuses on projects
     ]
 };
 
@@ -79,11 +76,10 @@ export function AppSidebar({ user, projects, ...props }: AppSidebarProps) {
         avatar: '/avatars/user.jpg'
     };
 
-    // Format projects for the sidebar
     const formattedProjects = projects.map((p) => ({
         name: p.name,
         url: `/portal/project/${p.id}`,
-        icon: Frame // Default icon for projects
+        icon: Frame
     }));
 
     return (
@@ -92,7 +88,28 @@ export function AppSidebar({ user, projects, ...props }: AppSidebarProps) {
                 <TeamSwitcher teams={data.teams} />
             </SidebarHeader>
             <SidebarContent>
-                {/* <NavMain items={data.navMain} /> -- keeping commented as it was */}
+                {/* Admin Panel link — only for ADMIN users */}
+                {user?.role === 'ADMIN' && (
+                    <SidebarGroup>
+                        <SidebarGroupLabel>Administration</SidebarGroupLabel>
+                        <SidebarGroupContent>
+                            <SidebarMenu>
+                                <SidebarMenuItem>
+                                    <SidebarMenuButton
+                                        asChild
+                                        tooltip="Admin Panel"
+                                    >
+                                        <Link href="/portal/admin">
+                                            <Shield />
+                                            <span>Admin Panel</span>
+                                        </Link>
+                                    </SidebarMenuButton>
+                                </SidebarMenuItem>
+                            </SidebarMenu>
+                        </SidebarGroupContent>
+                    </SidebarGroup>
+                )}
+                {/* <NavMain items={data.navMain} /> */}
                 <NavProjects projects={formattedProjects} />
             </SidebarContent>
             <SidebarFooter>
