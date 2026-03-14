@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         'best marketing agency India',
         'UI/UX design agency India'
     ],
-    authors: [{ name: 'Trunal Team', url: 'https://trunal.com' }],
+    authors: [{ name: 'Trunal Team', url: 'https://trunal.in' }],
     creator: 'Trunal',
     publisher: 'Trunal',
     formatDetection: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         address: false,
         telephone: false
     },
-    metadataBase: new URL('https://trunal.com'),
+    metadataBase: new URL('https://trunal.in'),
     alternates: {
         canonical: '/'
     },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
         title: 'Trunal | Best Digital Marketing Agency in Varanasi & India',
         description:
             'Leading digital agency in Varanasi providing top-tier web development and marketing solutions.',
-        url: 'https://trunal.com',
+        url: 'https://trunal.in',
         siteName: 'Trunal',
         images: [
             {

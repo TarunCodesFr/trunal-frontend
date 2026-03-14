@@ -10,27 +10,27 @@ export default function Home() {
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        'name': 'Trunal',
-        'image': 'https://trunal.com/trunal-logo.png',
-        '@id': 'https://trunal.com',
-        'url': 'https://trunal.com',
-        'telephone': '+91-XXXXXXXXXX',
-        'address': {
+        name: 'Trunal',
+        image: 'https://trunal.in/trunal-logo.png',
+        '@id': 'https://trunal.in',
+        url: 'https://trunal.in',
+        telephone: '+91-XXXXXXXXXX',
+        address: {
             '@type': 'PostalAddress',
-            'streetAddress': 'Varanasi',
-            'addressLocality': 'Varanasi',
-            'addressRegion': 'Uttar Pradesh',
-            'postalCode': '221001',
-            'addressCountry': 'IN'
+            streetAddress: 'Varanasi',
+            addressLocality: 'Varanasi',
+            addressRegion: 'Uttar Pradesh',
+            postalCode: '221001',
+            addressCountry: 'IN'
         },
-        'geo': {
+        geo: {
             '@type': 'GeoCoordinates',
-            'latitude': 25.3176,
-            'longitude': 82.9739
+            latitude: 25.3176,
+            longitude: 82.9739
         },
-        'openingHoursSpecification': {
+        openingHoursSpecification: {
             '@type': 'OpeningHoursSpecification',
-            'dayOfWeek': [
+            dayOfWeek: [
                 'Monday',
                 'Tuesday',
                 'Wednesday',
@@ -39,14 +39,15 @@ export default function Home() {
                 'Saturday',
                 'Sunday'
             ],
-            'opens': '00:00',
-            'closes': '23:59'
+            opens: '00:00',
+            closes: '23:59'
         },
-        'sameAs': [
+        sameAs: [
             'https://www.linkedin.com/company/trunal',
             'https://www.instagram.com/trunal'
         ],
-        'description': 'Best digital marketing and web development agency in Varanasi and India.'
+        description:
+            'Best digital marketing and web development agency in Varanasi and India.'
     };
 
     return (
