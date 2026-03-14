@@ -1,22 +1,17 @@
-import { SidebarProvider } from '@/components/ui/sidebar';
 import { Metadata } from 'next';
-import SmoothScrolling from '../components/flows/SmoothScrolling';
 
 export const metadata: Metadata = {
-    title: 'Trunal | Plans',
-    description: "Plans for Trunal's products and services."
+    title: 'Digital Marketing & Web Development Pricing',
+    description: 'Explore Trunal\'s transparent pricing for digital marketing, SEO, and web development services in India. Quality digital growth at competitive rates.',
+    alternates: {
+        canonical: '/pricing',
+    },
 };
 
-export default function DashboardLayout({
-    children
+export default function PricingLayout({
+    children,
 }: {
     children: React.ReactNode;
 }) {
-    return (
-        <SmoothScrolling>
-            <div className="flex min-h-screen text-black">
-                <main className="flex-1 ">{children}</main>
-            </div>
-        </SmoothScrolling>
-    );
+    return <>{children}</>;
 }

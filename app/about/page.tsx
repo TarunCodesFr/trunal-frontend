@@ -560,7 +560,7 @@ export default function AboutPage() {
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                                     <a
-                                        href="mailto:hello@trunal.dev"
+                                        href="/contact"
                                         className="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full bg-cyan-400 text-[#020d1a] text-sm font-bold tracking-wide hover:bg-cyan-300 active:scale-95 transition-all duration-200"
                                     >
                                         Start a Project

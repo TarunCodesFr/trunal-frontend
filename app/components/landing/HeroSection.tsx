@@ -11,17 +11,17 @@ import {
 import { ArrowRight, Star } from 'lucide-react';
 
 const clientLogos = [
-    { name: 'Startup Co', initials: 'SC' },
-    { name: 'TechFlow', initials: 'TF' },
-    { name: 'GrowthLab', initials: 'GL' },
-    { name: 'NovaBrand', initials: 'NB' },
-    { name: 'ScaleUp', initials: 'SU' }
+    { name: 'Kashi Dental Clinic', initials: 'KC' },
+    { name: 'Alok Pipelines', initials: 'AP' },
+    { name: 'Family Sweets', initials: 'FS' },
+    { name: 'Hanuman Ji Restraunt', initials: 'HR' },
+    { name: 'GyanDeep Public Acedemy', initials: 'GD' }
 ];
 
 const stats = [
     { value: '50+', label: 'Projects Delivered' },
     { value: '99.9%', label: 'Uptime SLA' },
-    { value: '50+', label: 'Enterprise Clients' },
+    { value: '20+', label: 'Enterprise Clients' },
     { value: '<1s', label: 'Avg Load Time' }
 ];
 
@@ -133,7 +133,7 @@ export default function Hero() {
                 <div className="flex justify-center mb-8">
                     <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-500/[0.05] px-5 py-2 text-[11px] font-mono tracking-[0.15em] uppercase text-cyan-400/80 backdrop-blur-sm select-none">
                         <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400 hero-pulse" />
-                        Software &amp; Digital Agency — Varanasi, India
+                        Best Digital Marketing Agency in Varanasi & India
                     </span>
                 </div>
 

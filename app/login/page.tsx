@@ -105,7 +105,7 @@ export default function LoginPage() {
                     {/* Stats row */}
                     <div className="mt-12 grid grid-cols-3 gap-6">
                         {[
-                            { value: '150+', label: 'Projects Delivered' },
+                            { value: '50+', label: 'Projects Delivered' },
                             { value: '50+', label: 'Happy Clients' },
                             { value: '99.9%', label: 'Uptime SLA' }
                         ].map((s) => (
